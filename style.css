@@ -3,3 +3,44 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+/* DEBUG:  */
+.container-pagina{
+  background-color: grey;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container-whatsapp{
+  background: white;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  display: flex;
+}
+
+
+.sezione-sx{
+  background-color: lightblue;
+  width: 35%;
+  height: 100%;
+}
+
+.area-personale{
+
+}
+
+.notifiche{
+
+}
+
+.barra-ricerca{
+
+}
+
+.sezione-dx{
+  background-color: lightgreen;
+  width: 65%;
+  height: 100%;
+}
