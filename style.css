@@ -68,19 +68,33 @@
 }
 
 .finestra-messaggi{
-  background-color: orange;
+  background: url("img/sfondino.jpg");
   width: 100%;
   height: 80%;
 }
 
 .mex-ricevuto{
+  padding: 25px;
   display: flex;
   justify-content: flex-start;
 }
 
+.mex-ricevuto p{
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
 .mex-inviato{
+  padding: 25px;
   display: flex;
   justify-content: flex-end;
+}
+
+.mex-inviato p{
+  background: #D5F9BA;
+  padding: 20px;
+  border-radius: 15px;
 }
 
 .barra-invio-mex{

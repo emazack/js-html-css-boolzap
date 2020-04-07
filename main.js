@@ -10,14 +10,4 @@ $(document).ready(function(){
       $(".barra-scrittura input").val("Scrivi un messaggio");
     }
   )
-
-  // function () {
-  //    var input = $('input').val();
-  //    // console.log(input);
-  //    contenitore.append("<li>" + input + "</li>");
-  //    $('input').val("");
-  //  }
-
-
-
 });
