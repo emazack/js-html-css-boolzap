@@ -73,8 +73,18 @@
   height: 80%;
 }
 
+.mex-ricevuto{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.mex-inviato{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .barra-invio-mex{
-  background-color: black;
+  background-color: brown;
   width: 100%;
   height: 10%;
 }
