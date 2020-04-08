@@ -58,9 +58,13 @@
   margin: auto;
 }
 
-.barra-ricerca .barra-scrittura{
+.barra-ricerca .box-ricerca-contatti{
   margin: auto;
   width: 88%;
+}
+
+.barra-ricerca .box-ricerca-contatti input{
+  width: 90%;
 }
 
 /* /////////////////////////////////////////// */
