@@ -25,23 +25,24 @@ $(document).ready(function(){
   var barraRicercaContatti = $(".box-ricerca-contatti input");
   // salvo l'info del blocco contatto/utente
   var contattoConversazione = $(".contatto");
-  // salvo l'info del nome utente
-  var nomeUtenteConversazione = $(".nome-utente");
 
 // ad ogni pressione di lettera sulla tastiera
   barraRicercaContatti.keypress(function(){
     // salvo il contenuto della barra (quello che scrivo)
     var testoDaRicercare = barraRicercaContatti.val();
+    console.log(testoDaRicercare);
     // per ogni contatto che ho nella lista utenti
     contattoConversazione.each(
       function(){
         // salvo l'info del nome utente
-        var nomeUtenteConversazione = $(".nome-utente");
+        var nomeUtenteConversazione = contattoConversazione.children(".nome-utente h4").text();
+        console.log(nomeUtenteConversazione);
+        console.log(contattoConversazione);
         // controllo se la key premuta è nel nome utente
-        if ($(this)) {
-
+        if (testoDaRicercare.includes(nomeUtenteConversazione)) {
+          $(this).show();
         } else {
-
+          $(this).hide();
         }
       }
     )
