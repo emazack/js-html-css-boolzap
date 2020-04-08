@@ -18,7 +18,7 @@ $(document).ready(function(){
     }
   )
 
-  // filtro contatti
+  /////////////////////////////// filtro contatti//////////////////////////////////////////
   //gestirte evento su tastiera (oppure su click di bottone di input ricerca)
 
   // salvo l'informazione della barra di ricerca
@@ -26,38 +26,29 @@ $(document).ready(function(){
   // salvo l'info del blocco contatto/utente
   var contattoConversazione = $(".contatto");
 
-// ad ogni pressione di lettera sulla tastiera
-  barraRicercaContatti.keypress(function(){
-    // salvo il contenuto della barra (quello che scrivo)
-    var testoDaRicercare = barraRicercaContatti.val();
-    console.log(testoDaRicercare);
-    // per ogni contatto che ho nella lista utenti
-    contattoConversazione.each(
-      function(){
-        // salvo l'info del nome utente
-        var nomeUtenteConversazione = contattoConversazione.children(".nome-utente h4").text();
-        console.log(nomeUtenteConversazione);
-        console.log(contattoConversazione);
-        // controllo se la key premuta è nel nome utente
-        if (testoDaRicercare.includes(nomeUtenteConversazione)) {
-          $(this).show();
-        } else {
-          $(this).hide();
+// Dicono che l'evento deve avvenire sulla barra di ricerca dei contatti
+// on serve a tenere attivo gli eventi ed input serve a fare in modo che prenda
+// quello che scrivo all'interno in tempo reale
+
+  barraRicercaContatti.on("input",
+    function(){
+      // salvo il contenuto della barra (quello che scrivo)
+      var testoDaRicercare = barraRicercaContatti.val();
+      // per ogni contatto che ho nella lista utenti
+      contattoConversazione.each(
+        function(){
+          // salvo l'info del nome utente
+          var nomeUtenteConversazione = $(this).find("h4").text();
+          // controllo se la key premuta è nel nome utente
+          if (nomeUtenteConversazione.toLowerCase().includes(testoDaRicercare.toLowerCase())) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
         }
-      }
-    )
+      )
+    }
+  )
 
 
-  });
-
-
-  // salvarmi input utente in campo del filtro (stringa1)
-
-  // selezionare tutti i blocchi di contatto e ciclare tra di essi (each())
-    //salvo in una var il valore del testo del nome nel contatto (stringa2)
-
-    // confronto per vedere se la stringa inserita nell'input è inclusa nel nome del contatto
-      //stringa2.includes(stringa1)
-      //se l'occorenza è stata trovata lascio il blocco di contatto visibile
-      // altrimenti lo rendo non visibile (this)
 });
