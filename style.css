@@ -29,11 +29,15 @@
   height: 100%;
 }
 
+/* ///////////////////////////////////////// */
+
 .area-personale{
   background-color: blue;
   width: 100%;
   height: 10%;
 }
+
+/* ///////////////////////////////////////// */
 
 .notifiche{
   background-color: green;
@@ -41,17 +45,44 @@
   height: 10%;
 }
 
+/* ///////////////////////////////////////// */
+
 .barra-ricerca{
+  display: flex;
   background-color: pink;
   width: 100%;
   height: 5%;
 }
+
+.barra-ricerca .box-lente{
+  margin: auto;
+}
+
+.barra-ricerca .barra-scrittura{
+  margin: auto;
+  width: 88%;
+}
+
+/* /////////////////////////////////////////// */
 
 .lista-contatti{
   background-color: darkgrey;
   width: 100%;
   height: 75%;
 }
+
+.contatto{
+  background-color: white;
+  height: calc(100%/8);
+  border: 1px solid grey;
+  display: flex;
+}
+
+.avatar{
+  max-width: 60px;
+}
+
+
 
 /* SEZIONE DESTRA **************************/
 
@@ -97,8 +128,32 @@
   border-radius: 15px;
 }
 
+/* Barra di invio *******************************/
+
 .barra-invio-mex{
+  display: flex;
+  text-align: center;
   background-color: brown;
   width: 100%;
   height: 10%;
+}
+
+.barra-invio-mex *{
+  margin: auto;
+}
+
+.emoticon{
+  width: 5%;
+}
+
+.barra-scrittura{
+  width: 90%;
+}
+
+.barra-scrittura input{
+  width: 100%;
+}
+
+.tasto-invio{
+  width: 5%;
 }
