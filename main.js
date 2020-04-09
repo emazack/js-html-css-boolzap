@@ -8,12 +8,12 @@ $(document).ready(function(){
       // prendo il valore presente nella barra di scrittura e lo salvo
       var testoInput = $(".barra-scrittura input").val();
       // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura
-      $(".finestra-messaggi").append("<div class='mex-inviato'><p>" + testoInput + "</p></div>");
+      $(".selected").append("<div class='mex-inviato'><p>" + testoInput + "</p></div>");
       // azzero il valore della barra di scrittura
       $(".barra-scrittura input").val("Scrivi un messaggio");
       // invio di messaggio automatico
       setTimeout(function(){
-        $(".finestra-messaggi").append("<div class='mex-ricevuto'><p> Sae </p></div>");
+        $(".selected").append("<div class='mex-ricevuto'><p> Sae </p></div>");
       }, 1000);
     }
   )
@@ -63,15 +63,13 @@ $(document).ready(function(){
        contattoConversazione.removeClass("active");
        // inserisci la classe active solo al contatto cliccato
        $(this).addClass("active");
+       // recupero la info che riguarda il data attribute della conversazione
+       var dataConversazioneContatto = $(this).attr("data-conversazione");
+       // nascondo tutte le finestre
+       finestraMessaggio.removeClass("selected");
        // seleziono anche la finestra di messaggio corrispondente
-       if ($(this).hasClass("active")) {
-         var contattoSelezionato = $(this).attr("data-conversazione");
-         var finestraSelezionata = finestraMessaggio.is(contattoSelezionato);
-         console.log(finestraSelezionata);
-       } else {
-         console.log("NO");
-       }
-
+       var conversazioneDaMostrare = $(".finestra-messaggi[data-conversazione=" + dataConversazioneContatto + "]");
+       conversazioneDaMostrare.addClass("selected");
      }
    )
 
