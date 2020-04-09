@@ -18,8 +18,7 @@ $(document).ready(function(){
     }
   )
 
-  /////////////////////////////// filtro contatti//////////////////////////////////////////
-  //gestirte evento su tastiera (oppure su click di bottone di input ricerca)
+  /////////////////////////////// filtro contatti///////////////////////////////
 
   // salvo l'informazione della barra di ricerca
   var barraRicercaContatti = $(".box-ricerca-contatti input");
@@ -32,6 +31,7 @@ $(document).ready(function(){
 
   barraRicercaContatti.on("input",
     function(){
+      console.log("evento");
       // salvo il contenuto della barra (quello che scrivo)
       var testoDaRicercare = barraRicercaContatti.val();
       // per ogni contatto che ho nella lista utenti
@@ -48,7 +48,31 @@ $(document).ready(function(){
         }
       )
     }
-  )
+  );
+  // Click sul contatto mostra la conversazione del contatto cliccato
+  // click sul contatto che ha data-attr che corrisponde a stesso data-attr in chat
+ // salvo il valore dell'attr e lo usso per dire quale chat è attiva
 
+ // salvo la finestra in una varaibile
+ var finestraMessaggio = $(".finestra-messaggi");
+
+// succede qualcosa al click del contatto
+   contattoConversazione.click(
+     function(){
+       // togli la classe active a tutti i contatti conversazione
+       contattoConversazione.removeClass("active");
+       // inserisci la classe active solo al contatto cliccato
+       $(this).addClass("active");
+       // seleziono anche la finestra di messaggio corrispondente
+       if ($(this).hasClass("active")) {
+         var contattoSelezionato = $(this).attr("data-conversazione");
+         var finestraSelezionata = finestraMessaggio.is(contattoSelezionato);
+         console.log(finestraSelezionata);
+       } else {
+         console.log("NO");
+       }
+
+     }
+   )
 
 });
