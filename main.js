@@ -8,17 +8,17 @@ $(document).ready(function(){
       // prendo il valore presente nella barra di scrittura e lo salvo
       var testoInput = $(".barra-scrittura input").val();
       // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura
-      $(".selected").append("<div class='mex-inviato'><p>" + testoInput + "</p></div>");
+      $(".selected").append( "<div class='mex-inviato' style=''><p>" + testoInput + "</p> <div class='mutendina'> Cancella </div></div>");
       // azzero il valore della barra di scrittura
       $(".barra-scrittura input").val("Scrivi un messaggio");
       // invio di messaggio automatico
       setTimeout(function(){
-        $(".selected").append("<div class='mex-ricevuto'><p> Sae </p></div>");
+        $(".selected").append("<div class='mex-ricevuto' style=''><p> OK </p> <div class='mutendina'> Cancella </div></div>");
       }, 1000);
     }
   )
 
-  /////////////////////////////// filtro contatti///////////////////////////////
+  /////////////////////////////// filtro contatti ///////////////////////////////
 
   // salvo l'informazione della barra di ricerca
   var barraRicercaContatti = $(".box-ricerca-contatti input");
@@ -50,8 +50,6 @@ $(document).ready(function(){
     }
   );
   // Click sul contatto mostra la conversazione del contatto cliccato
-  // click sul contatto che ha data-attr che corrisponde a stesso data-attr in chat
- // salvo il valore dell'attr e lo usso per dire quale chat è attiva
 
  // salvo la finestra in una varaibile
  var finestraMessaggio = $(".finestra-messaggi");
@@ -72,5 +70,75 @@ $(document).ready(function(){
        conversazioneDaMostrare.addClass("selected");
      }
    )
+
+   // se clicco sul messaggio si apre una tendina sotto con scritto
+   // cancella
+
+  var messaggioRicevuto = $(".mex-riceuto");
+  var messaggioInviato = $(".mex-inviato");
+
+  // per messaggio inviato
+  $(document).on("click", ".mex-inviato",
+    function(){
+      $(this).find(".mutendina").toggle();
+    }
+  );
+  // anche per messaggio ricevuto
+  $(document).on("click", ".mex-ricevuto",
+    function(){
+      $(this).find(".mutendina").toggle();
+    }
+  );
+
+  // se clicco su cancella viene cancellato il messaggio.
+  $(document).on("click", ".mutendina",
+    function(){
+      $(this).parent().hide();
+    }
+  );
+
+
+
+   // Creare la freccetta all'hover del messaggio
+
+   // var messaggioInviato = $(".mex-inviato p");
+   // var messaggioRicevuto = $(".mex-ricevuto p");
+   //
+   // messaggioInviato.hover(
+   //   function(){
+   //     $(this).append('<i class="fas fa-chevron-down"></i>');
+   //   }, function() {
+   //     $(this).find("i").last().remove()
+   //   }
+   // );
+   // messaggioRicevuto.hover(
+   //   function(){
+   //     $(this).append('<i class="fas fa-chevron-down"></i>');
+   //   }, function() {
+   //     $(this).find("i").last().remove()
+   //   }
+   // );
+
+
+   // Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+    // son riuascito ad agganciarte l'evento sul "delete" potrò dirgli una roba tipo this.padre.cancella();
+    // $('.mex-inviato p').on("click", "i",
+    //    function () {
+    //      $(".mutendina").toggle();
+    //     // $(this).hide();
+    //    }
+    //
+    // );
+    ///////////////////////////////////////////////////////////
+  //   var messaggioInviato = $(".mex-inviato p");
+  //   var messaggioRicevuto = $(".mex-ricevuto p");
+  //
+  //   $(document).on("click", ".mex-inviato p",
+  //   function(){
+  //     $(this).append('<i class="fas fa-chevron-down"></i>');
+  //   }, function() {
+  //     $(this).find("i").last().remove()
+  //   }
+  // );
 
 });
