@@ -10,7 +10,7 @@ $(document).ready(function(){
       // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura
       $(".selected").append( "<div class='mex-inviato' style=''><p>" + testoInput + "</p> <div class='mutendina'> Cancella </div></div>");
       // azzero il valore della barra di scrittura
-      $(".barra-scrittura input").val("Scrivi un messaggio");
+      $(".barra-scrittura input").val("");
       // invio di messaggio automatico
       setTimeout(function(){
         $(".selected").append("<div class='mex-ricevuto' style=''><p> OK </p> <div class='mutendina'> Cancella </div></div>");
@@ -74,7 +74,7 @@ $(document).ready(function(){
    // se clicco sul messaggio si apre una tendina sotto con scritto
    // cancella
 
-  var messaggioRicevuto = $(".mex-riceuto");
+  var messaggioRicevuto = $(".mex-ricevuto");
   var messaggioInviato = $(".mex-inviato");
 
   // per messaggio inviato
