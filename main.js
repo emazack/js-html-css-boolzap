@@ -2,7 +2,7 @@ $(document).ready(function(){
   // salvataggio e creazione variabili
   var tastoInvio = $(".tasto-invio");
 
-  // al click c'è l'invio del messaggio
+  //////////////////// al click c'è l'invio del messaggio
   tastoInvio.click(
     function(){
       // prendo il valore presente nella barra di scrittura e lo salvo
@@ -63,11 +63,22 @@ $(document).ready(function(){
        $(this).addClass("active");
        // recupero la info che riguarda il data attribute della conversazione
        var dataConversazioneContatto = $(this).attr("data-conversazione");
+       // recupero la info riguardo il nome contatto e l'immagine
+       var dataImmagineContatto = $(this).find("img").clone();
+       var dataNomeContatto = $(this).find("h4").clone();
        // nascondo tutte le finestre
        finestraMessaggio.removeClass("selected");
        // seleziono anche la finestra di messaggio corrispondente
        var conversazioneDaMostrare = $(".finestra-messaggi[data-conversazione=" + dataConversazioneContatto + "]");
+       // mostro la finestra corrispondete selezionata
        conversazioneDaMostrare.addClass("selected");
+       // aggiungo il nome contatto e l'immagine del contatto
+       // rimuovo
+       $(".foto-profilo-selezionato").empty();
+       $(".testo-contatto-selezionato").empty();
+       // aggiungo
+       $(".foto-profilo-selezionato").append(dataImmagineContatto);
+       $(".testo-contatto-selezionato").append(dataNomeContatto);
      }
    )
 
@@ -93,7 +104,7 @@ $(document).ready(function(){
   // se clicco su cancella viene cancellato il messaggio.
   $(document).on("click", ".mutendina",
     function(){
-      $(this).parent().hide();
+      $(this).parent().remove();
     }
   );
 
