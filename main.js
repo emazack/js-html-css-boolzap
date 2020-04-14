@@ -108,48 +108,4 @@ $(document).ready(function(){
     }
   );
 
-
-
-   // Creare la freccetta all'hover del messaggio
-
-   // var messaggioInviato = $(".mex-inviato p");
-   // var messaggioRicevuto = $(".mex-ricevuto p");
-   //
-   // messaggioInviato.hover(
-   //   function(){
-   //     $(this).append('<i class="fas fa-chevron-down"></i>');
-   //   }, function() {
-   //     $(this).find("i").last().remove()
-   //   }
-   // );
-   // messaggioRicevuto.hover(
-   //   function(){
-   //     $(this).append('<i class="fas fa-chevron-down"></i>');
-   //   }, function() {
-   //     $(this).find("i").last().remove()
-   //   }
-   // );
-
-
-   // Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
-    // son riuascito ad agganciarte l'evento sul "delete" potrò dirgli una roba tipo this.padre.cancella();
-    // $('.mex-inviato p').on("click", "i",
-    //    function () {
-    //      $(".mutendina").toggle();
-    //     // $(this).hide();
-    //    }
-    //
-    // );
-    ///////////////////////////////////////////////////////////
-  //   var messaggioInviato = $(".mex-inviato p");
-  //   var messaggioRicevuto = $(".mex-ricevuto p");
-  //
-  //   $(document).on("click", ".mex-inviato p",
-  //   function(){
-  //     $(this).append('<i class="fas fa-chevron-down"></i>');
-  //   }, function() {
-  //     $(this).find("i").last().remove()
-  //   }
-  // );
-
 });
