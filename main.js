@@ -2,13 +2,24 @@ $(document).ready(function(){
   // salvataggio e creazione variabili
   var tastoInvio = $(".tasto-invio");
 
-  //////////////////// al click c'è l'invio del messaggio
+
+  //// variabili per utilizzo e attuazione del handlebars ////
+  // Prendo quello che è contenuto nello script selezionandolo tramite id
+  var source = $("#template-mex").html();
+  // ciò che ho preso lo do a Handlebars e glielo faccio smaneggiare
+  var template = Handlebars.compile(source);
+
+  /////////////////// al click c'è l'invio del messaggio
   tastoInvio.click(
     function(){
       // prendo il valore presente nella barra di scrittura e lo salvo
       var testoInput = $(".barra-scrittura input").val();
-      // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura
-      $(".selected").append( "<div class='mex-inviato' style=''><p>" + testoInput + "</p> <div class='mutendina'> Cancella </div></div>");
+      // creo oggetto contente l'informaizone del messaggio che ci serve inserire, facendo attenzione a definire le key da sostituire all'interno dell'html
+      var testoInputObject = {MessaggioChat: testoInput};
+      // creo una variabile che contiene l'informazione completa del tamplate + il testo inserito dinamicamente
+      var html = template(testoInputObject);
+      // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura (quindi l'informazione presa prima)
+      $(".selected").append(html);
       // azzero il valore della barra di scrittura
       $(".barra-scrittura input").val("");
       // invio di messaggio automatico
