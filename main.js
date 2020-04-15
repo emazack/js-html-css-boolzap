@@ -5,7 +5,7 @@ $(document).ready(function(){
 
   //// variabili per utilizzo e attuazione del handlebars ////
   // Prendo quello che è contenuto nello script selezionandolo tramite id
-  var source = $("#template-mex").html();
+  var source = $("#template-mex-inviato").html();
   // ciò che ho preso lo do a Handlebars e glielo faccio smaneggiare
   var template = Handlebars.compile(source);
 
@@ -15,16 +15,24 @@ $(document).ready(function(){
       // prendo il valore presente nella barra di scrittura e lo salvo
       var testoInput = $(".barra-scrittura input").val();
       // creo oggetto contente l'informaizone del messaggio che ci serve inserire, facendo attenzione a definire le key da sostituire all'interno dell'html
-      var testoInputObject = {MessaggioChat: testoInput};
+      var testoInputObject = {
+        MessaggioChat: testoInput,
+        TipoDiMessaggio: "mex-inviato"
+      };
       // creo una variabile che contiene l'informazione completa del tamplate + il testo inserito dinamicamente
       var html = template(testoInputObject);
       // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura (quindi l'informazione presa prima)
       $(".selected").append(html);
       // azzero il valore della barra di scrittura
       $(".barra-scrittura input").val("");
-      // invio di messaggio automatico
+      // invio di messaggio automatico - Rispetto a prima inserisco solo come messaggio l'ok ma non l'input inserito
       setTimeout(function(){
-        $(".selected").append("<div class='mex-ricevuto' style=''><p> OK </p> <div class='mutendina'> Cancella </div></div>");
+        var testoAutomaticoObject = {
+          MessaggioChat: "ok dai",
+          TipoDiMessaggio: "mex-ricevuto"
+        };
+        var html = template(testoAutomaticoObject);
+        $(".selected").append(html);
       }, 1000);
     }
   )
