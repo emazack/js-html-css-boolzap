@@ -16,6 +16,10 @@ img{
   margin-right: 15px;
 }
 
+i{
+  color: grey;
+}
+
 
 .container-pagina{
   background: rgb(205,209,199);
@@ -270,4 +274,8 @@ img{
 
 .tasto-invio{
   width: 5%;
+}
+
+#arrow{
+  display: none;
 }

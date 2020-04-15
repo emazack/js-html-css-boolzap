@@ -1,6 +1,27 @@
 $(document).ready(function(){
   // salvataggio e creazione variabili
   var tastoInvio = $(".tasto-invio");
+  var barraInvioMessaggio = $(".barra-scrittura input");
+
+  // fare in modo che quando clicco su qualsiasi
+
+
+  // fare in modo che venga mostrata la freccia di invio al click (focus) nella barra di scrittura e nascosto il microfono e viceversa quando non c'è focus.
+
+  // quando c'è focus
+  barraInvioMessaggio.focus(
+    function(){
+      $("#mic").hide();
+      $("#arrow").show();
+    }
+  );
+  // quando non c'è focus
+  barraInvioMessaggio.focusout(
+    function(){
+      $("#mic").show();
+      $("#arrow").hide();
+    }
+  );
 
 
   //// variabili per utilizzo e attuazione del handlebars ////
@@ -14,28 +35,33 @@ $(document).ready(function(){
     function(){
       // prendo il valore presente nella barra di scrittura e lo salvo
       var testoInput = $(".barra-scrittura input").val();
-      // creo oggetto contente l'informaizone del messaggio che ci serve inserire, facendo attenzione a definire le key da sostituire all'interno dell'html
-      var testoInputObject = {
-        MessaggioChat: testoInput,
-        TipoDiMessaggio: "mex-inviato"
-      };
-      // creo una variabile che contiene l'informazione completa del tamplate + il testo inserito dinamicamente
-      var html = template(testoInputObject);
-      // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura (quindi l'informazione presa prima)
-      $(".selected").append(html);
-      // azzero il valore della barra di scrittura
-      $(".barra-scrittura input").val("");
-      // invio di messaggio automatico - Rispetto a prima inserisco solo come messaggio l'ok ma non l'input inserito
-      setTimeout(function(){
-        var testoAutomaticoObject = {
-          MessaggioChat: "ok dai",
-          TipoDiMessaggio: "mex-ricevuto"
+      // se la barra non è vuota
+      if (testoInput !== "") {
+        // creo oggetto contente l'informaizone del messaggio che ci serve inserire, facendo attenzione a definire le key da sostituire all'interno dell'html
+        var testoInputObject = {
+          MessaggioChat: testoInput,
+          TipoDiMessaggio: "mex-inviato"
         };
-        var html = template(testoAutomaticoObject);
+        // creo una variabile che contiene l'informazione completa del tamplate + il testo inserito dinamicamente
+        var html = template(testoInputObject);
+        // inserisco nella finestra messaggi ciò che è scritto nella barra di scrittura (quindi l'informazione presa prima)
         $(".selected").append(html);
-      }, 1000);
+        // azzero il valore della barra di scrittura
+        $(".barra-scrittura input").val("");
+        // invio di messaggio automatico - Rispetto a prima inserisco solo come messaggio l'ok ma non l'input inserito
+        setTimeout(function(){
+          var testoAutomaticoObject = {
+            MessaggioChat: "ok dai",
+            TipoDiMessaggio: "mex-ricevuto"
+          };
+          var html = template(testoAutomaticoObject);
+          $(".selected").append(html);
+        }, 1000);
+      } else {
+        alert("Non hai un microfono attivo");
+      }
     }
-  )
+  );
 
   /////////////////////////////// filtro contatti ///////////////////////////////
 
